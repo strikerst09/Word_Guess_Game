@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Avengers Hangman</title>
 </head>
 
 <body>
-    <h1>Welcome to Marvel's Avengers: The Hangman Game</h1>
-    <h2>Can you guess what word this is? You will find directions and clues below. Good luck!</h2>
+    <h1 id="Title">Welcome to Marvel's Avengers: The Hangman Game</h1>
+    <h2 id="instrLine">Can you guess what word this is? You will find directions and clues below. Good luck!</h2>
     <div class="container">
         <div class="row">
             <div class="imgbox">
@@ -17,20 +19,20 @@
             </div>
             <div class="vl"></div>
             <div class="gameInfo">
-                <h3>Press any key to start!</h3>
-                <h4>Wins:
-                    <div class="winsBox">5</div>
-                </h4>
+                <h3 id="instructions">Press any key to start as your first guess!</h3>
+                <h4 id="winsBox"></h4>
                 <h4>Current Word:</h4>
-                <div class="wordBox">1</div>
-                <h4>Number of Guesses Remaining:</h4>
-                <div class="guessesRem">1</div>
+                <div id="wordBox"></div>
+                <h4>Number of Wrong Guesses Remaining:</h4>
+                <div id="guessesRem"></div>
                 <h4>Letters Already Guessed:</h4>
-                <div class="guessedBox">1</div>
+                <div id="guessedBox"></div>
             </div>
         </div>
 
     </div>
+    
+    <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>
