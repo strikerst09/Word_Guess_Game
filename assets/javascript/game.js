@@ -4,22 +4,35 @@
 // This array contains the words to guess for the game.
 var words = [
     "thanos",
-    "steverogers",
+    "captainamerica",
     "groot",
-    "tonystark",
+    "ironman",
     "thor",
     "spiderman",
     "hulk",
     "blackwidow",
     "scarletwitch",
     "thewasp",
+    "okoye",
+    "shuri",
+    "blackpanther",
+    "whitewolf",
+    "vision",
+    "nebula",
+    "drstrange",
+    "wong",
+    "starlord",
+    "warmachine",
+    "drax",
+    "rocket",
+    "antman",
 ];
 
-var guessBox = [""];
+var guessBox = [];
 // Start the game with a score of 0.
 var wins = 0;
 // Start the game with all guesses remaining.
-var guessRem = 7;
+var guessRem = 10;
 // Variable to hold the index of current word.
 var wordsIndex = 0;
 
@@ -27,6 +40,7 @@ var wordsIndex = 0;
 
 // FUNCTIONS
 // =================================
+
 
 // VAR WORKS
 var word = words[Math.floor(Math.random() * words.length)]
@@ -56,7 +70,7 @@ function renderWord() {
 
 // Function that updates the guesses remaining. DOESNT WORK because we haven't told guessRem when to decrease, just that it should. (Tue 8/28)
 function updateGuessRem() {
-    document.querySelector("#guessRem").innerHTML = guessRem - 1;
+    document.querySelector("#guessRem").innerHTML = guessRem;
 }
 
 // Function that updates the score... doesn't work, haven't gotten that far yet (Tue 8/28)
@@ -74,31 +88,25 @@ renderWord();
 updateWinsBox();
 updateGuessRem();
 
-// Captures keyboard input and applies letter to letters guessed. PUSHES LETTERS TO CONSOLE, CAN'T GET THEM TO CHECK WORD
+// Captures keyboard input and applies letter to letters guessed. PUSHES LETTERS TO DIV, CAN'T GET THEM TO CHECK WORD
 document.onkeyup = function (event) {
-    
+
     // Variable to hold key entered.
     var userInput = event.key.toLowerCase();
-    // Function that updates the letters guessed section. (ONLY INCREASES BY NUMBER NOT LETTER TUE 8/28)
+    guessBox.push(userInput);
+    // Function that updates the letters guessed section. (works wed 8/29)
     function updateLettersGuessed() {
-        var newArray = guessBox.push(userInput);
-        return newArray;
-        document.querySelector("#guessedBox").innerHTML = (newArray);
+        document.querySelector("#guessedBox").innerHTML = (guessBox);
     }
-    // writing letters to letters guessed div, but does not concatenate TUE 8/28
-    document.querySelector("#guessedBox").innerHTML = (event.key);
-    // Update game state with guess NOT FUNCTIONAL, DONT THINK COMES INTO PLAY TUE 8/28
+    // Creates variable for string of letter guessed; determines if part of word or not (DOES NOT SUBTRACT VALUE FROM # OF WRONG GUESSES)
     for (var j = 0; j < word.length; j++) {
         if (word[j] === userInput) {
             answerArray[j] = userInput;
             remainingLetters--;
         }
-        else {
-            updateGuessRem();
-        }
-
-        updateLettersGuessed();
-    }
+    } 
+    // Update game state with guess (WORKS FRI 8/31)
+    document.querySelector("#wordBox").innerHTML = (answerArray.join(" "));
+    updateLettersGuessed();
+ 
 }
-
-
